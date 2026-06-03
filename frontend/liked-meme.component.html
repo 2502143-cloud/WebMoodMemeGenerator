@@ -1,0 +1,31 @@
+<div class="page-wrapper">
+  <h2 class="section-title">❤️ Liked Memes</h2>
+  <p class="section-sub">All the memes you've loved — organized by mood</p>
+
+  <!-- Filter tabs -->
+  <div class="filter-tabs">
+    <button class="filter-tab"
+            *ngFor="let tab of tabs"
+            [class.active]="activeTab === tab.key"
+            (click)="selectTab(tab.key)">
+      {{ tab.emoji }} {{ tab.label }}
+    </button>
+  </div>
+
+  <!-- Loading -->
+  <div class="spinner" *ngIf="loading"></div>
+
+  <!-- Meme grid -->
+  <div class="meme-grid" *ngIf="!loading && memes.length > 0">
+    <app-meme-card *ngFor="let meme of memes" [meme]="meme"
+                   (likeToggled)="onUnlike($event)"></app-meme-card>
+  </div>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="!loading && memes.length === 0">
+    <div class="emoji">💔</div>
+    <h3>No liked memes yet</h3>
+    <p>Browse memes and hit the ❤️ button to save them here</p>
+    <a routerLink="/generate" class="btn btn-primary" style="margin-top:16px">Browse Memes</a>
+  </div>
+</div>

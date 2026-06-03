@@ -1,0 +1,43 @@
+<div class="page-wrapper">
+  <h2 class="section-title">Generate Memes</h2>
+  <p class="section-sub">Browse memes by mood or search for the perfect one</p>
+
+  <!-- Search bar -->
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input class="form-control search-input" type="text"
+           placeholder="Search memes by title or tag..."
+           [(ngModel)]="searchQuery"
+           (keyup.enter)="onSearch()" />
+    <button class="btn btn-primary" (click)="onSearch()">Search</button>
+    <button class="btn btn-outline" *ngIf="searchQuery" (click)="clearSearch()">✕ Clear</button>
+  </div>
+
+  <!-- Mood filter tabs -->
+  <div class="mood-tabs">
+    <button class="mood-tab"
+            *ngFor="let mood of moods"
+            [class.active]="selectedMood === mood.key"
+            (click)="selectMood(mood.key)">
+      {{ mood.emoji }} {{ mood.label }}
+    </button>
+  </div>
+
+  <!-- Results count -->
+  <p class="results-count" *ngIf="!loading">{{ memes.length }} memes found</p>
+
+  <!-- Loading -->
+  <div class="spinner" *ngIf="loading"></div>
+
+  <!-- Meme grid -->
+  <div class="meme-grid" *ngIf="!loading">
+    <app-meme-card *ngFor="let meme of memes" [meme]="meme"></app-meme-card>
+  </div>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="!loading && memes.length === 0">
+    <div class="emoji">🤷</div>
+    <h3>No memes found</h3>
+    <p>Try a different mood or search term</p>
+  </div>
+</div>

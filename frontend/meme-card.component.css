@@ -1,0 +1,49 @@
+.meme-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+.meme-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+.meme-img-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  overflow: hidden;
+  background: var(--border);
+}
+.meme-img-wrap img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.meme-img-wrap .mood-badge {
+  position: absolute;
+  top: 10px; left: 10px;
+}
+
+.meme-body { padding: 14px; }
+.meme-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+
+.meme-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+.tag {
+  background: rgba(108,99,255,0.1);
+  color: var(--primary);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.meme-footer { display: flex; justify-content: flex-end; }
+.like-btn {
+  background: none;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text);
+}
+.like-btn:hover { border-color: #ef4444; background: rgba(239,68,68,0.08); }
+.like-btn.liked { border-color: #ef4444; background: rgba(239,68,68,0.1); }

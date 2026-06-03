@@ -1,0 +1,49 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a routerLink="/" class="nav-logo" (click)="closeMenu()">
+      <span class="logo-icon">😂</span>
+      <span class="logo-text">MoodMeme</span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="nav-links" [class.open]="menuOpen">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Home</a></li>
+      <li><a routerLink="/generate" routerLinkActive="active" (click)="closeMenu()">Generate Meme</a></li>
+      <li><a routerLink="/liked" routerLinkActive="active" (click)="closeMenu()">❤️ Liked</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+      <li *ngIf="user?.role === 'Admin'">
+        <a routerLink="/admin" routerLinkActive="active" (click)="closeMenu()">⚙️ Admin</a>
+      </li>
+    </ul>
+
+    <!-- Right section -->
+    <div class="nav-right">
+      <!-- Date/time -->
+      <div class="datetime">
+        <span class="time">{{ currentTime }}</span>
+        <span class="date">{{ currentDate }}</span>
+      </div>
+
+      <!-- Theme toggle -->
+      <button class="theme-btn" (click)="toggleTheme()" [title]="isDark ? 'Switch to Light' : 'Switch to Dark'">
+        {{ isDark ? '☀️' : '🌙' }}
+      </button>
+
+      <!-- Auth buttons -->
+      <ng-container *ngIf="!user; else loggedIn">
+        <a routerLink="/login" class="btn btn-outline btn-sm">Login</a>
+        <a routerLink="/signup" class="btn btn-primary btn-sm">Sign Up</a>
+      </ng-container>
+      <ng-template #loggedIn>
+        <span class="username">👤 {{ user?.username }}</span>
+        <button class="btn btn-outline btn-sm" (click)="logout()">Logout</button>
+      </ng-template>
+
+      <!-- Hamburger -->
+      <button class="hamburger" (click)="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>

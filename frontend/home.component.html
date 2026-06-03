@@ -1,0 +1,55 @@
+<div class="home-page">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🎭 Mood-Based Meme Generator</div>
+      <h1>How are you feeling<br><span class="gradient-text">today?</span></h1>
+      <p>Pick your mood and we'll serve up the perfect memes to match your vibe.</p>
+      <a routerLink="/generate" class="btn btn-primary hero-btn">Browse All Memes →</a>
+    </div>
+    <div class="hero-emoji">😂</div>
+  </section>
+
+  <!-- Mood Selector -->
+  <section class="mood-section page-wrapper">
+    <h2 class="section-title">Select Your Mood</h2>
+    <p class="section-sub">Tap a mood and get instant memes curated just for you</p>
+
+    <div class="mood-grid">
+      <div class="mood-card" *ngFor="let mood of moods"
+           (click)="selectMood(mood.key)"
+           [style.--mood-color]="mood.color">
+        <div class="mood-emoji">{{ mood.emoji }}</div>
+        <h3>{{ mood.label }}</h3>
+        <p>{{ mood.desc }}</p>
+        <span class="mood-arrow">→</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features page-wrapper">
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🎯</div>
+        <h4>Mood-Based</h4>
+        <p>Memes perfectly matched to your current emotional state</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">❤️</div>
+        <h4>Save Favorites</h4>
+        <p>Like and save your favorite memes to view anytime</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔍</div>
+        <h4>Search Memes</h4>
+        <p>Search by keyword, mood, or tag to find the perfect meme</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌙</div>
+        <h4>Dark Mode</h4>
+        <p>Easy on your eyes with a beautiful dark mode toggle</p>
+      </div>
+    </div>
+  </section>
+</div>

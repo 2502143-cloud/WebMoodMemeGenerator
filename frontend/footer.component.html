@@ -1,0 +1,26 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <span class="footer-logo">😂 MoodMeme</span>
+      <p>Your mood, your meme. Find the perfect meme for every feeling.</p>
+    </div>
+    <div class="footer-links">
+      <div class="link-group">
+        <h4>Navigate</h4>
+        <a routerLink="/">Home</a>
+        <a routerLink="/generate">Generate Meme</a>
+        <a routerLink="/liked">Liked Memes</a>
+        <a routerLink="/contact">Contact</a>
+      </div>
+      <div class="link-group">
+        <h4>Moods</h4>
+        <a routerLink="/generate" [queryParams]="{mood:'happy'}">😄 Happy</a>
+        <a routerLink="/generate" [queryParams]="{mood:'sad'}">😢 Sad</a>
+        <a routerLink="/generate" [queryParams]="{mood:'frustrated'}">😤 Frustrated</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© {{ year }} MoodMeme. Made with ❤️ for meme lovers.</p>
+  </div>
+</footer>

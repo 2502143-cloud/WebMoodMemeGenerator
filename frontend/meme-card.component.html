@@ -1,0 +1,19 @@
+<div class="meme-card card">
+  <div class="meme-img-wrap">
+    <img [src]="meme.imageUrl" [alt]="meme.title" loading="lazy" />
+    <span class="mood-badge" [ngClass]="'mood-' + meme.mood">
+      {{ getMoodEmoji(meme.mood) }} {{ meme.mood }}
+    </span>
+  </div>
+  <div class="meme-body">
+    <h3 class="meme-title">{{ meme.title }}</h3>
+    <div class="meme-tags" *ngIf="meme.tags">
+      <span class="tag" *ngFor="let tag of meme.tags.split(',')">{{ tag.trim() }}</span>
+    </div>
+    <div class="meme-footer">
+      <button class="like-btn" [class.liked]="meme.isLiked" (click)="toggleLike()">
+        {{ meme.isLiked ? '❤️' : '🤍' }} {{ meme.likeCount }}
+      </button>
+    </div>
+  </div>
+</div>
